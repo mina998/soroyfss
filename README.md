@@ -92,6 +92,12 @@ www.domain.com {
     file_server
 }
 ```
+#### 4 HTTPs 添加域名(解析成功)自动会申请ssl证书
+```Shell
+www.domain.com:8088
+root * /usr/share/caddy
+file_server
+```
 ### 运行常用指令
 ```Shell
 service caddy restart
