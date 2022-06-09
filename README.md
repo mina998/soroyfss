@@ -7,8 +7,7 @@
 ```Shell
 apt install vsftpd -y
 ```
-
-# 修改配置
+### 修改配置
 ```Shell
 cd /etc
 #备份配置文件
@@ -16,8 +15,7 @@ mv vsftpd.conf vsftpd.conf.old
 #添加配置文件
 vi vsftpd.conf
 ```
-
-# 配置文件内容
+### 配置文件内容
 ```Shell
 #模式运行
 listen=NO
@@ -58,4 +56,43 @@ pam_service_name=vsftpd
 rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
 rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
 ssl_enable=NO
+```
+
+# 安装 Caddy2 Server
+
+```Shell
+apt install -y debian-keyring debian-archive-keyring apt-transport-https
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+apt update
+apt install caddy
+```
+### 编辑配置文件
+```Shell
+/etc/caddy/Caddyfile
+````
+### 配置文件内容
+#### 1 HTTP
+```Shell
+:80
+root * /usr/share/caddy
+file_server
+```
+#### 2 HTTP
+```Shell
+:80 {
+    root * /usr/share/caddy
+    file_server
+}
+```
+#### 3 HTTPs 添加域名(解析成功)自动会申请ssl证书
+```Shell
+www.domain.com {
+    root * /usr/share/caddy
+    file_server
+}
+```
+### 运行
+```Shell
+caddy run
 ```
