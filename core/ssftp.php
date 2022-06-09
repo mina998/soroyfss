@@ -14,13 +14,13 @@ class SsFtp{
 	 * @param $username : FTP服务器登陆用户名
 	 * @param $password : FTP服务器用户密码
 	 */
-    private function __construct($host, $port, $username, $password){
+    private function __construct($host, $port, $username, $password, $mode){
         // 链接FTP服务器
         $this->conn = ftp_connect($host, $port) or die("Could not connect");
         // 登陆FTP
         ftp_login($this->conn, $username, $password);
         // FTP主动模式
-        ftp_pasv($this->conn, false);
+        ftp_pasv($this->conn, $mode);
     }
 	/**
 	 * 创建文件夹 无返回值
@@ -82,16 +82,18 @@ class SsFtp{
     }
 	/**
 	 * 单例模式
+	 *
 	 * @param $host
 	 * @param $port
 	 * @param $username
 	 * @param $password
+	 * @param $mode
 	 *
 	 * @return SsFtp
 	 */
-    public static function ftp_instance($host, $port, $username, $password): SsFtp {
+    public static function ftp_instance($host, $port, $username, $password, $mode): SsFtp {
         if(!self::$instance instanceof self){
-            self::$instance = new self($host, $port, $username, $password);
+            self::$instance = new self($host, $port, $username, $password, $mode);
         }
         return self::$instance;
     }

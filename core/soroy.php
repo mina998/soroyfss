@@ -15,9 +15,11 @@ class Soroy{
 	// FTP 用户密码
 	protected $ftp_password;
 	// FTP 上传子目录
-	protected $fss_path = '';
+	protected $fss_path      = '';
 	// FTP 端口
 	protected $ftp_port      = 21;
+	// FTP 模式
+	protected $ftp_mode      = 0;
 	// 上传文件是否自动重命名 1=重命名
 	protected $renames_allow = 0;
 	// 是否删除本地文件 1 为删除
@@ -26,7 +28,6 @@ class Soroy{
 	protected $option_name = 'soroy_fss_plugin';
 	// 插件文件
 	protected $plugin_file;
-
 	/**
 	 * 构造方法
 	 * @param $file : 插件文件 soroyfss/soroyfss.php
@@ -133,7 +134,7 @@ class Soroy{
 	 * @return SsFtp
 	 */
     protected function ftp(): SsFtp {
-        return SsFtp::ftp_instance($this->ftp_host, $this->ftp_port, $this->ftp_username, $this->ftp_password);
+        return SsFtp::ftp_instance($this->ftp_host, $this->ftp_port, $this->ftp_username, $this->ftp_password, $this->ftp_mode);
     }
 	/**
 	 * 自动加载类

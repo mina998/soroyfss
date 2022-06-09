@@ -13,7 +13,7 @@
                     <th scope="row"><label for="ftp_host">FTP服务器地址</label></th>
                     <td>
                         <input id="ftp_host" name="ftp_host" type="text" value="<?php echo esc_attr($this->ftp_host); ?>" class="regular-text">
-                        <p class="description">填写虚拟主机地址。示例：<code>123.123.123.123</code></p>
+                        <p class="description">填写虚拟主机地址. 示例：<code>123.123.123.123</code></p>
                     </td>
                 </tr>
                 <tr>
@@ -23,29 +23,34 @@
                     </td>
                 </tr>
                 <tr>
+                    <th scope="row"><label for="ftp_mode">FTP模式</label></th>
+                    <td>
+                        <input name="ftp_mode" type="hidden"  value="<?php echo $this->ftp_mode;?>">
+                        <input id="ftp_mode" type="checkbox" <?php if ($this->ftp_mode){ ?> checked="checked" <?php }?>>
+                        "勾选" 使用FTP被动模式
+                    </td>
+                </tr>
+                <tr>
                     <th scope="row"><label for="ftp_domain">FTP空间绑定域名</label></th>
                     <td>
                         <input id="ftp_domain" name="ftp_domain" type="text" value="<?php echo esc_attr($this->ftp_domain); ?>" class="regular-text">
                         <div class="description">
-                            <p><b>设置注意事项：</b></p>
-                            <p>1. 一般我们是以：<code>http://{FTP空间绑定域名}</code>，同样不要用"/"结尾。</p>
-                            <p>2. 示范： <code>http(s)://ftp.laobuluo.com</code></p>
+                            <p><strong>设置注意事项: </strong></p>
+                            <p>1. 一般我们是以: <code>http://{FTP空间绑定域名}</code>, 同样不要用"/"结尾.</p>
+                            <p>2. 示范： <code>http(s)://images.xxxx.com</code></p>
                         </div>
                     </td>
                 </tr>
-
                 <tr>
                     <th scope="row"><label for="ftp_username">FTP用户名</label></th>
                     <td><input id="ftp_username" name="ftp_username" type="text" value="<?php echo esc_attr($this->ftp_username); ?>" class="regular-text code"></td>
                 </tr>
-
                 <tr>
                     <th scope="row"><label for="ftp_password">FTP密码</label></th>
                     <td>
                         <input id="ftp_password" name="ftp_password" type="password" value="<?php echo esc_attr($this->ftp_password); ?>" class="regular-text code">
                     </td>
                 </tr>
-
                 <tr>
                     <th scope="row"><label for="fss_path">存储子目录</label></th>
                     <td>
@@ -53,7 +58,6 @@
                         <p class="description">默认留空, 结尾不要加 "/", 比如/wwwroot</p>
                     </td>
                 </tr>
-
                 <tr>
                     <th scope="row"><label for="renames_allow">自动重命名</label></th>
                     <td>
@@ -62,7 +66,6 @@
                         "勾选" 如果文件名中包含中文, 则自动动重命名
                     </td>
                 </tr>
-
                 <tr>
                     <th scope="row"><label for="disable_local">删除本地文件</label></th>
                     <td>
