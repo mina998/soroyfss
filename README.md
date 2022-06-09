@@ -100,9 +100,6 @@ file_server
 ```
 ### 运行常用指令
 ```Shell
-service caddy restart
-service caddy reload
-caddy reload
-service caddy status
-caddy run
+systemctl start caddy
+systemctl status caddy
 ```
