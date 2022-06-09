@@ -92,7 +92,11 @@ www.domain.com {
     file_server
 }
 ```
-### 运行
+### 运行常用指令
 ```Shell
+service caddy restart
+service caddy reload
+caddy reload
+service caddy status
 caddy run
 ```
